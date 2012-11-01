@@ -1,0 +1,7 @@
+<div id="sub_menu">
+<%= link_to 'My Collections', collections_path(:user_id => current_user), :class => 'menu_item' + (@view == 'my_collections' ? ' active' : '') %>
+<%= link_to 'All Collections', collections_path, :class => 'menu_item' + (@view == 'all_collections' ? ' active' : '') %>
+<br/><%= link_to 'Create New Collection', new_collection_path, :class => 'menu' %>
+</div>
+
+<%= render 'collections/list', :collections => @collections %>

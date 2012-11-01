@@ -1,0 +1,71 @@
+/* Image with border */
+
+div#thingspotter_imagespotter div.thingspotter_image {
+	position: absolute;
+	z-index: 9000099;
+	cursor: pointer;
+	font: bold 16px Helvetica,Arial,sans-serif;
+	padding: 10px;
+	border: 14px solid #cc599a;
+}
+
+div#thingspotter_imagespotter div.thingspotter_image:hover {
+	border: 14px solid #cc80ab;
+}
+
+/* Inner block */
+
+div#thingspotter_imagespotter div.thingspotter_image div {
+	/*background: #fb9b2b;*/
+	color: #FFF;
+	padding: 10px;
+	text-align: center;
+}
+
+div#thingspotter_imagespotter div.thingspotter_image div:hover {
+	/*background: #fbbe77;*/
+}
+
+/* Iconset + icons */
+
+.ts_iconset {
+	position: absolute;
+	z-index: 3;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.ts_iconset .ts_icon {
+	position: relative;
+	display: inline-block;
+	top: 33px;
+	z-index: 10;
+	width: 47px;
+	height: 47px;
+	background-image: url('/images/icons_spot.png');
+	background-repeat: no-repeat;
+}
+
+.ts_iconset .ts_share { background-position: 0px 0px; }
+.ts_iconset .ts_share:hover, .ts_iconset .ts_share_is:hover { background-position: -47px 0px; }
+.ts_iconset .ts_share:active, .ts_iconset .ts_share_is:active { background-position: -94px 0px; }
+.ts_iconset .ts_share_is { background-position: -141px 0px; }
+
+.ts_iconset .ts_want { background-position: 0px -47px; }
+.ts_iconset .ts_want:hover, .ts_iconset .ts_want_is:hover { background-position: -47px -47px; }
+.ts_iconset .ts_want:active, .ts_iconset .ts_want_is:active { background-position: -94px -47px; }
+.ts_iconset .ts_want_is { background-position: -141px -47px; }
+
+.ts_iconset .ts_own { background-position: 0px -94px; }
+.ts_iconset .ts_own:hover, .ts_iconset .ts_own_is:hover { background-position: -47px -94px; }
+.ts_iconset .ts_own:active, .ts_iconset .ts_own_is:active { background-position: -94px -94px; }
+.ts_iconset .ts_own_is { background-position: -141px -94px; }
+
+.ts_iconset .ts_recommend { background-position: 0px -141px; }
+.ts_iconset .ts_recommend:hover, .ts_iconset .ts_recommend_is:hover { background-position: -47px -141px; }
+.ts_iconset .ts_recommend:active, .ts_iconset .ts_recommend_is:active { background-position: -94px -141px; }
+.ts_iconset .ts_recommend_is { background-position: -141px -141px; }

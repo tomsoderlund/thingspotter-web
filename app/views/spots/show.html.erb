@@ -1,0 +1,18 @@
+<%= render :partial => 'things/list_item', :locals => { :thing => @spot.thing } %>
+
+<p>
+  <b>Website:</b> <%= @spot.website_url %>
+</p>
+
+<p>
+  <b>I Want This:</b> <%= @spot.is_wanted ? 'X' : '-' %>
+</p>
+
+<p>
+  <b>I Own This:</b> <%= @spot.is_owned ? 'X' : '-' %>
+</p>
+
+<div class="menu">
+<%= link_to 'Edit', edit_spot_path(@spot), :class => 'menu' %>
+<%= link_to 'Back', spots_path, :class => 'menu' %>
+</div>

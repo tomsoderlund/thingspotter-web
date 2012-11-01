@@ -1,0 +1,7 @@
+<div id="login_box"<%#= ' style="display: none;"' unless has_site_access? %>>
+<%= render :partial => 'layouts/login_logout_buttons' %>
+
+<% if session['layout'] == 'desktop' && current_user %>
+<p><%= link_to('Invite Friends', new_invitation_path, :class => 'menu') %></p>
+<% end %>
+</div>

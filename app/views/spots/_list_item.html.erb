@@ -1,0 +1,6 @@
+<li><span class="user_photo_small"><fb:profile-pic uid="<%= list_item.user.fb_user_id %>" size="square" width="20" height="20" facebook-logo="false" linked="false"></fb:profile-pic></span>
+<%= list_item.action_verb %>
+<%= relative_date(list_item.created_at) %>
+by <%= user_or_you list_item.user %><% if list_item.recommended_to_user != nil %> to <%= user_or_you list_item.recommended_to_user %><% end %><% 
+   if !list_item.comment_text.blank? %>: <span class="quote"><%= list_item.comment_text %></span><% end %>
+<%= link_to(image_tag('icon_delete_off.png'), list_item, :confirm => 'This will delete the spot, and also the thing if you are the only one that spotted it. Continue?', :method => :delete) if (list_item.user == current_user || list_item.recommended_to_user == current_user) %></li>

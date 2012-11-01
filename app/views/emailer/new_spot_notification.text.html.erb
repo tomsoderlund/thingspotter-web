@@ -1,0 +1,8 @@
+<%= render :partial => 'email_header' %>
+	
+<p>Hi <%= @user.name %>!</p>
+<p>Just a heads up that <a href="<%= @user_url %>" style="color: #fca124;"><%= @spot.user.name %></a> has <%= @spot.action_verb.downcase %> your spot <a href="<%= @thing_url %>" style="color: #fca124;"><%= @spot.thing.name_with_brand %></a>.</p>
+<p><a href="<%= @thing_url %>"><img alt="<%= @spot.thing.name_with_brand %>" title="<%= @spot.thing.name_with_brand %>" src="<%= @thing_photo_url %>" style="border: 0px;"></a></p>
+<p>/The Thingspotter team</p>
+
+<%= render :partial => 'email_footer' %>

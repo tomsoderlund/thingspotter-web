@@ -1,0 +1,187 @@
+AR:
+  name: Argentina
+  country_code: AR
+
+AT:
+  name: Austria
+  country_code: AT
+
+BE:
+  name: Belgium
+  country_code: BE
+
+BR:
+  name: Brazil
+  country_code: BR
+
+BG:
+  name: Bulgaria
+  country_code: BG
+
+CA:
+  name: Canada
+  country_code: CA
+
+CL:
+  name: Chile
+  country_code: CL
+
+CN:
+  name: China
+  country_code: CN
+
+HR:
+  name: Croatia
+  country_code: HR
+
+CZ:
+  name: Czech Republic
+  country_code: CZ
+
+DK:
+  name: Denmark
+  country_code: DK
+
+EG:
+  name: Egypt
+  country_code: EG
+
+EE:
+  name: Estonia
+  country_code: EE
+
+FI:
+  name: Finland
+  country_code: FI
+
+FR:
+  name: France
+  country_code: FR
+
+DE:
+  name: Germany
+  country_code: DE
+
+GR:
+  name: Greece
+  country_code: GR
+
+HU:
+  name: Hungary
+  country_code: HU
+
+IS:
+  name: Iceland
+  country_code: IS
+
+IN:
+  name: India
+  country_code: IN
+
+IE:
+  name: Ireland
+  country_code: IE
+
+IL:
+  name: Israel
+  country_code: IL
+
+IT:
+  name: Italy
+  country_code: IT
+
+JP:
+  name: Japan
+  country_code: JP
+
+LV:
+  name: Latvia
+  country_code: LV
+
+LT:
+  name: Lithuania
+  country_code: LT
+
+LU:
+  name: Luxembourg
+  country_code: LU
+
+MT:
+  name: Malta
+  country_code: MT
+
+MX:
+  name: Mexico
+  country_code: MX
+
+MA:
+  name: Morocco
+  country_code: MA
+
+NL:
+  name: Netherlands
+  country_code: NL
+
+NOX:
+  name: Norway
+  country_code: NO
+
+PL:
+  name: Poland
+  country_code: PL
+
+PT:
+  name: Portugal
+  country_code: PT
+
+RO:
+  name: Romania
+  country_code: RO
+
+RU:
+  name: Russia
+  country_code: RU
+
+SK:
+  name: Slovakia
+  country_code: SK
+
+SI:
+  name: Slovenia
+  country_code: SI
+
+ZA:
+  name: South Africa
+  country_code: ZA
+
+KR:
+  name: South Korea
+  country_code: KR
+
+ES:
+  name: Spain
+  country_code: ES
+
+SE:
+  name: Sweden
+  country_code: SE
+
+CH:
+  name: Switzerland
+  country_code: CH
+
+TR:
+  name: Turkey
+  country_code: TR
+
+UA:
+  name: Ukraine
+  country_code: UA
+
+UK:
+  name: United Kingdom
+  country_code: UK
+
+US:
+  name: United States of America
+  country_code: US

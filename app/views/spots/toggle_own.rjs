@@ -1,0 +1,5 @@
+page << "$('own" + @spot.id.to_s + "').className = 'ts_icon " + (@is_owned ? "ts_own_is" : "ts_own") + "';"
+page.replace_html :message_notice, flash[:notice]
+page[:message_notice].show
+page[:message_notice].visual_effect :fade, :duration => 3.0
+flash.discard

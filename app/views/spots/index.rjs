@@ -1,0 +1,2 @@
+page.insert_html(:bottom, 'spots_list', :partial => "spots/list", :object => @spots)
+page.replace_html('loadmore_holder', :partial => "spots/list_navigationbar")

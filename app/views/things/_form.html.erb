@@ -1,0 +1,12 @@
+<% form_for(@thing, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render 'things/form_photo', { :f => f, :thing => @thing, :photo_style => 'web_big' } %>
+  <%= render :partial => 'form_fields', :locals => { :f => f, :thing => @thing } %>
+
+<div class="menu">
+<%= f.submit 'Save' %>
+<%= link_to 'Cancel', spots_path, :class => 'menu' %>
+</div>
+
+<% end %>

@@ -1,0 +1,11 @@
+if flash[:error]
+  page.replace_html :message_error, flash[:error]
+  page[:message_error].show
+  flash.discard
+else
+  page.insert_html(:bottom, 'spots_comments_list', :partial => "list_item", :object => @comment)
+  page[:comment_form].reset
+  page << "if (FB.XFBML.Host.parseDomTree) setTimeout(FB.XFBML.Host.parseDomTree, 0);"
+end
+
+page[:comment_comment].enable

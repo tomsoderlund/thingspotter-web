@@ -1,0 +1,12 @@
+<p>
+  <b>User:</b>
+  <%=h @follower.follower_id %>
+</p>
+
+<p>
+  <b>Follows user:</b>
+  <%=h @follower.follows_user_id %>
+</p>
+
+<%= link_to 'Edit', edit_follower_path(@follower) %> |
+<%= link_to 'Back', followers_path %>

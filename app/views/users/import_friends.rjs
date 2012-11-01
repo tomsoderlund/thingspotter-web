@@ -1,0 +1,2 @@
+page[:import_friends_box].replace_html "<span>Thank you!</span>"
+page[:import_friends_box].visual_effect :fade

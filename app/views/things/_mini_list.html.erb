@@ -1,0 +1,9 @@
+<% things.each do |thing| %>
+<div class="thing_box_mini">
+<% begin %>
+<%= link_to image_tag(thing.photo_path(:web_mini), :class => 'size_web_mini'), thing %><br/>
+<div class="title"><%= link_to truncate(h(thing.name_with_brand), {:length => 20}), thing %></div>
+<% rescue %>
+<% end %>
+</div>
+<% end %>

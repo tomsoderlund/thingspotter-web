@@ -1,0 +1,9 @@
+<% if @user_to_invite %>
+<hr>
+<p>Your friend is not yet on Thingspotter?</p>
+<table><%= render :partial => 'users/user_info_box_small', :locals => { :user => @user_to_invite } %></table>
+<% elsif @related_user %>
+<hr>
+<p>We think you should follow:</p>
+<table><%= render :partial => 'users/user_info_box_small', :locals => { :user => @related_user } %></table>
+<% end %>

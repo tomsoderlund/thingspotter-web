@@ -1,0 +1,31 @@
+<div class="white_frame_intro">
+<%= render :partial => 'progress_menu' %>
+
+<h1 class="intro">Find Friends</h1>
+
+<p>Thingspotter lets you follow friends and other people who's taste you like. The spots of the people you follow are visible in your feed. Here are some of the people you may want to follow.</p>
+
+<table style="width: 700px;">
+<tr>
+<td>
+	<h2 class="intro">Follow Your Friends</h2>
+	<% if @friends.empty? %>
+	<p>Sorry, could not find any of your Facebook friends on Thingspotter yet. Tell them!</p>
+	<% else %>
+	<%= render 'users/friends_list', :friends => @friends %>
+	<% end %>
+</td>
+<td>
+	<h2 class="intro">Suggested Thingspotters</h2>
+	<%= render 'users/friends_list', :friends => @good_thingspotters %>
+</td>
+</tr>
+</table>
+
+</br>
+
+<div class="menu">
+<%= button_to 'Go Thingspotting!', root_path %>
+</div>
+
+</div>

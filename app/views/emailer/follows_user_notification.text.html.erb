@@ -1,0 +1,7 @@
+<%= render :partial => 'email_header' %>
+	
+<p>Hi <%= @user.name %>!</p>
+<p>You must have great taste! <a href="<%= @follower_url %>"><%= @follower.name %></a> has decided to start following you on Thingspotter.</p>
+<p>/The Thingspotter team</p>
+
+<%= render :partial => 'email_footer' %>

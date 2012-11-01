@@ -1,0 +1,10 @@
+<%= render :partial => 'email_header' %>
+
+Hi <%= @user.name %>!
+
+<%= @spot.user.name %> (<%= @user_url %>) has recommended <%= @spot.thing.name_with_brand %> (<%= @thing_url %>) to you. Hope you like it!
+"<%= @spot.comment_text %>"
+
+/The Thingspotter team
+
+<%= render :partial => 'email_footer' %>

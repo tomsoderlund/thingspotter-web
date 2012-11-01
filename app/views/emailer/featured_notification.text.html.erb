@@ -1,0 +1,9 @@
+<%= render :partial => 'email_header' %>
+	
+<p>Hi <%= @user.name %>!</p>
+
+<p>We just want to let you know that your spot <a href="<%= @thing_url %>" style="color: #fca124;"><%= @thing.name_with_brand %></a> has been picked as a favorite by the Thingspotter team! This means that others can now find your spot under <a href="<%= @featured_url %>" style="color: #fca124;">&quot;Editor's Picks&quot;</a>.</p>
+<p><a href="<%= @thing_url %>"><img alt="<%= @thing.name_with_brand %>" title="<%= @thing.name_with_brand %>" src="<%= @thing_photo_url %>" style="border: 0px;"></a></p>
+<p>/The Thingspotter team</p>
+
+<%= render :partial => 'email_footer' %>

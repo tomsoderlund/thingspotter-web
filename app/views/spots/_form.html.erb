@@ -1,0 +1,18 @@
+<% form_for(@spot, :html => { :multipart => true }) do |f| %>
+<%= f.error_messages %>
+
+<% f.fields_for :thing do |f_thing| %>
+<%= render 'things/form_photo', { :f => f_thing, :thing => @spot.thing, :photo_style => 'web_big', :photo_size => 'web_big' } %>
+
+<div id="right_column">
+<%= render :partial => 'form_fields', :locals => { :f => f, :f_thing => f_thing } %>
+<% end %>
+
+<div class="menu">
+<%= f.submit 'Save' %>
+<%= link_to 'Cancel', (@spot.id.nil? ? root_path : thing_path(@spot.thing)), :class => 'menu cancel' %>
+</div>
+
+</div>
+
+<% end %>

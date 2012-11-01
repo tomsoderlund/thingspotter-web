@@ -1,0 +1,8 @@
+<%= render :partial => 'email_header' %>
+	
+<p>Hi <%= @user.name %>!</p>
+<p>Wanted to let you know that <a href="<%= @user_url %>" style="color: #fca124;"><%= @collection.user.name %></a> has added your spot <a href="<%= @thing_url %>" style="color: #fca124;"><%= @thing.name_with_brand %></a> to their collection <a href="<%= @collection_url %>" style="color: #fca124;"><%= @collection.name %></a>.</p>
+<p><a href="<%= @collection_url %>"><img alt="<%= @collection.name %>" title="<%= @collection.name %>" src="<%= @thing_photo_url %>" style="border: 0px;"></a></p>
+<p>/The Thingspotter team</p>
+
+<%= render :partial => 'email_footer' %>

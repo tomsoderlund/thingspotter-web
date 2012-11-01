@@ -1,0 +1,12 @@
+<% if current_user && current_user != user %><span id="follow<%= user.id %>">
+<% if user.is_registered? %>
+<%   if current_user.follows?(user) %>
+<%=    link_to_remote 'Unfollow', { :url => follower_path(current_user.follows?(user)), :method => :delete }, :class => 'menu cancel' %>
+<%   else %>
+<%=    link_to_remote 'Follow', { :url => followers_path(:follower => { :follower_id => current_user.id, :follows_user_id => user.id }), :method => :post }, :class => 'menu' %>
+<%   end %>
+<% else %>
+<%=  link_to_remote 'Invite', { :url => new_invitation_path(:id => user.id), :method => :get }, :class => 'menu invite' %>
+<% end %>
+</span><% end %>
+

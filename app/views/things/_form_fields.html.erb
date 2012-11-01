@@ -1,0 +1,9 @@
+<div><%= f.text_field :name, :size => 25, :class => 'large thing_form_field' %></div>
+
+<%= link_to 'Click to change description', '#', :class => 'optional_section', :id => 'section_thing_attributes_description_reveal', :onclick => "showProductSection('thing_attributes_description', true);" %>
+<p id="section_thing_attributes_description" style="display:none;">
+<%= f.text_area :description, :cols => 38, :rows => 3, :class => 'thing_form_field' %>
+</p>
+
+<%= f.hidden_field :tag_list %>
+<%= render :partial => 'common/tag_labels', :locals => { :tag_list => @spot.thing.tag_list.to_s, :tag_field => 'spot_thing_attributes_tag_list', :read_only => false } %>

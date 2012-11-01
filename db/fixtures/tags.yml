@@ -1,0 +1,35 @@
+art:
+  name: art
+  show_by_default: true
+
+beauty:
+  name: beauty
+  show_by_default: true
+
+clothes:
+  name: clothes
+  show_by_default: true
+
+food:
+  name: food
+  show_by_default: true
+
+home:
+  name: home
+  show_by_default: true
+
+kids:
+  name: kids
+  show_by_default: true
+
+tech:
+  name: tech
+  show_by_default: true
+
+sports:
+  name: sports
+  show_by_default: true
+
+vehicles:
+  name: vehicles
+  show_by_default: true

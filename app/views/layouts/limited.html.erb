@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title><%= @page_title %></title>
+<meta name="description" content="<%= @page_description %>">
+<meta name="keywords" content="<%= @page_keywords %>">
+<meta name="viewport" content="width=980"/>
+<%= stylesheet_link_tag 'common', 'desktop' %>
+<%= render :partial => 'layouts/font_system' %>
+<%= javascript_include_tag 'prototype', 'effects', 'controls', 'http://connect.facebook.net/en_US/all.js', 'application' %>
+<%#= csrf_meta_tags %>
+<link rel="icon" href="/images/thingspotter_icon_16px.ico" type="image/x-icon">
+<%= render :partial => 'layouts/google_analytics' %>
+</head>
+
+<body>
+	
+<%= render :partial => 'layouts/facebook_connect' %>
+
+<div id="page_content">
+<%= yield %>
+</div>
+
+<%= render :partial => 'users/import_friends_box' if current_user && !session["friends_imported"] %>
+<%= render :partial => 'layouts/logo' %>
+<%= render :partial => 'layouts/social_media_box' if @show_social_media %>
+<%= render :partial => 'layouts/login_box' if @show_social_media %>
+<%= render :partial => 'layouts/affiliate_system' %>
+<%= render :partial => 'layouts/user_voice' %>
+
+<div id="message_notice" <%= 'style="display:none;"' if !flash[:notice] %>><%= flash[:notice] %></div>
+<div id="message_error" <%= 'style="display:none;"' if !flash[:error] %>><%= flash[:error] %></div>
+
+</body>
+
+</html>

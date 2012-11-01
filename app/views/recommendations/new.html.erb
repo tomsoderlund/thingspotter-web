@@ -1,0 +1,29 @@
+<div class="white_frame">
+<h2>Recommend a Thing</h2>
+
+<% form_for(@spot, :url => { :controller => 'recommendations' }) do |f| %>
+<%= f.error_messages %>
+
+<p><%= image_tag @spot.thing.photo_path(:web_thumb), :class => 'web_thumb' %></p>
+
+<h1><%= @spot.thing.name_with_brand %></h1><%= f.hidden_field :thing_id %>
+<p><%= f.label :recommend_to_users, 'Recommend to:' %><br/><%= text_field_with_auto_complete :spot, :recommend_to_users, { :size => 37 }, { :url => friends_path(:js), :method => :get, :param_name => 'name' } %></p>
+
+<% f.fields_for :comment do |f_comment| %>
+<p>
+<%= f_comment.text_area :comment, :cols => 38, :rows => 3, :class => 'comment_box' %>
+</p>
+<% end %>
+
+<%= image_toggler_tag 'post_to_their_facebook', current_user.post_to_facebook, 'Post to their Facebook Wall' %>
+
+<div class="menu">
+  <%= f.submit 'Send Recommendation' %> <%= link_to 'Cancel', spots_path, :class => 'menu cancel' %>
+</div>
+
+<% end -%>
+</div>
+
+<% javascript_tag do -%>
+	$('spot_recommend_to_users').focus();
+<% end -%>

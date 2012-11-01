@@ -1,0 +1,5 @@
+<a class="menu draggable" 
+onclick="alert('Please drag this button to your bookmark bar, don\'t click it.'); return false;" 
+onmouseover="$('bookmarklet_arrow').show();"
+href="javascript:void((function(){serverURL='<%= root_url.slice(0, root_url.length-1) %>';var spotScript=document.createElement('script');spotScript.setAttribute('type','text/javascript');spotScript.setAttribute('src',serverURL+'/javascripts/imagespotter.js?rnd='+Math.random());document.getElementsByTagName('head')[0].appendChild(spotScript);})());"
+>+Thingspotter</a>

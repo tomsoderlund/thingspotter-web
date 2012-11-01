@@ -1,0 +1,24 @@
+<div class="white_frame">
+
+<table style="width: 100%">
+	<tr>
+		
+	<td>
+	<h1><%= @title %></h1>
+	<%= render 'users/friends_list', :friends => @followers %>
+	</td>
+
+	<td>
+	<h1>Find Facebook Friends</h1>
+	<%= link_to 'Browse Facebook Friends', friends_path, :class => 'menu' %><br/>
+	or<br/>
+	<%= render :partial => 'friends/search_box' %>
+	
+	<h1>Invite Friends</h1>
+	<p><%= link_to('Click here to invite', new_invitation_path, :class => 'menu') %></p>
+	</td>
+	
+	</tr>
+</table>
+
+</div>

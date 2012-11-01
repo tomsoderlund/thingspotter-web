@@ -1,0 +1,166 @@
+#search_box {
+	top: 90px;
+	left: 140px;
+	width: 230px;
+	margin-left: 0px;
+}
+
+.thing_summary {
+	position: relative;
+	font-size: 8pt;
+}
+
+.white_frame {
+	width: 348px;
+}
+
+#right_column {
+	position: relative;
+	display: inline-block;
+	width: 348px;
+}
+
+.size_web_big {
+	max-width: 348px;
+}
+
+#page_content {
+	top: 50px;
+	left: 0px;
+	margin-left: 0px;
+	width: 368px;
+}
+
+.thing_box, .collection_box {
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 160px;
+	height: 160px;
+}
+
+.col1 { margin-left: 0px; }
+.row1 { margin-top:  0px; }
+
+.thing_box a img {
+	max-width: 160px;
+}
+
+.ts_iconset .ts_iconset_background {
+	top: -45px;
+	width: 160px;
+	height: 131px;
+}
+
+.ts_iconset .ts_icon, .ts_iconset .ts_icon_social {
+	margin-left: -5px;
+}
+
+.thing_box .title, .collection_box .title {
+	top: 142px;
+}
+
+.thing_box .latest_comment {
+	display: none;
+}
+
+.thing_box .thing_summary {
+	top: 20px;
+}
+
+hr.thing {
+	width: 100%;
+}
+
+#events_box {
+	width: 100%;
+}
+
+.pagination {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#main_menu {
+	top: 7px;
+	left: 60px;
+	margin-left: 0px;
+	width: 320px;
+	height: 50px;
+}
+
+#main_menu a.menu_item {
+	width: 120px;
+	height: 58px;
+	margin: 0px 10px 0px 0px;
+	font-size: 12pt;
+}
+
+#sub_menu {
+	margin-left: 5px;
+}
+
+#sub_menu, #sub_menu span.spacer {
+	font-size: 10pt;
+}
+
+#sub_menu .menu {
+	left: 5px;
+}
+
+#side_box {
+	position: absolute;
+	z-index: 1;
+	margin: 0px;
+	left: 0px;
+	top: 1610px;
+	width: 368px;
+	height: 20px;
+}
+
+#side_box_menu {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 368px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#side_box_menu a {
+	display: inline-block;
+	font-size: 8pt;
+	margin: 0px 5px 0px 0px;
+}
+
+a#logo {
+	width: 49px;
+	height: 37px;
+	top: 2px;
+	left: 2px;
+	margin-left: 0px;
+	background-image: url('/images/thingspotter_logo_small.png');
+}
+
+#message_notice, #message_error, #import_friends_box {
+	width: 320px;
+	margin-left: -160px;
+}
+
+#user_description {
+	display: none;
+}
+
+.info_box {
+	margin-left: 0px;
+	left: 10px;
+	top: 160px;
+	width: 310px;
+	height: 150px;
+}
+
+#login_box {
+	top: 5px;
+	left: 245px;
+	margin-left: 0px;
+	width: 130px;
+}

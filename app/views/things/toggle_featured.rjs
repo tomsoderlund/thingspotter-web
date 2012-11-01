@@ -1,0 +1,4 @@
+page.replace_html :message_notice, flash[:notice]
+page[:message_notice].show
+page[:message_notice].visual_effect :fade, :duration => 3.0
+flash.discard

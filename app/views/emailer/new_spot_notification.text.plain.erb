@@ -1,0 +1,9 @@
+<%= render :partial => 'email_header' %>
+
+Hi <%= @user.name %>!
+
+Just a heads up that <%= @spot.user.name %> (<%= @user_url %>) has <%= @spot.action_verb.downcase %> your spot <%= @spot.thing.name_with_brand %> (<%= @thing_url %>).
+
+/The Thingspotter team
+
+<%= render :partial => 'email_footer' %>

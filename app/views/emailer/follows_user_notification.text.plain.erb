@@ -1,0 +1,7 @@
+<%= render :partial => 'email_header' %>
+	
+Hi <%= @user.name %>!
+You must have great taste! <%= @follower.name %> (<%= @follower_url %>) has decided to start following you on Thingspotter.
+/The Thingspotter team
+
+<%= render :partial => 'email_footer' %>

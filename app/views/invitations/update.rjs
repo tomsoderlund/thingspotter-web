@@ -1,0 +1,10 @@
+if flash[:error]
+  page.replace_html :message_error, flash[:error]
+  page[:message_error].show
+else
+  #page[:new_invitation].reset
+  page.replace_html :message_notice, flash[:notice]
+  page[:message_notice].show
+end
+
+flash.discard

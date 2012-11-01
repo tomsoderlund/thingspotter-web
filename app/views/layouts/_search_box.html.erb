@@ -1,0 +1,9 @@
+<div id="search_box">
+<% form_tag('/spots', :method => :get, :id => 'search_form') do -%>
+<%= text_field_tag 'search', params[:search], :id => 'search_field', :size => 25, :onkeyup => 'if (this.value != "") $("search_button").addClassName("active"); else $("search_button").removeClassName("active");' %>
+<%= link_to_function '', '$("search_form").submit();', :id => 'search_button' %>
+<% end -%>
+
+<%= javascript_include_tag 'hintvalue' %>
+<%= javascript_tag "new HintValue('search_field', {value: 'Search for thing, tag, or user'});" %>
+</div>

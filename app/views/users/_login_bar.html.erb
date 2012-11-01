@@ -1,0 +1,11 @@
+<div id="login_bar">
+<div id="logo"><%= link_to 'Thingspotter&trade;', root_path %></div><% 
+
+if logged_in? 
+%>
+<%= link_to current_user.name, current_user %>
+| <fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large">
+<% else %>
+Log in with your Facebook account:
+<fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large">
+<% end %></div>

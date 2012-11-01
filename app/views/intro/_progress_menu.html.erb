@@ -1,0 +1,7 @@
+<div id="sub_menu">
+<%= link_to '1. Welcome', intro1_path, :class => 'menu_item' + (@view == 'step1' ? ' active' : '') %>
+<%= link_to '2. Sign Up', intro2_path, :class => 'menu_item' + (@view == 'step2' ? ' active' : '') %>
+<%= link_to '3. Install Bookmarklet', intro3_path, :class => 'menu_item' + (@view == 'step3' ? ' active' : '') %>
+<%= link_to '4. Find Friends', intro4_path, :class => 'menu_item' + (@view == 'step4' ? ' active' : '') %>
+<hr class="orange">
+</div>

@@ -1,0 +1,11 @@
+<% if logged_in? 
+%><fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large"></fb:login-button><% 
+else 
+%><fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large"></fb:login-button><% 
+end %>
+
+<script type="text/javascript">
+	//FB.Event.subscribe("auth.login",  function() { window.location.reload(); });
+	FB.Event.subscribe("auth.login",  function() { window.location = '/intro?just_logged_in=1'; });
+	FB.Event.subscribe("auth.logout", function() { window.location = '/logout'; });
+</script>

@@ -1,0 +1,36 @@
+# The api key, secret key, and canvas page name are required to get started
+# Tunnel configuration is only needed if you are going to use the facebooker:tunnel Rake tasks
+# Your callback url in Facebook should be set to http://public_host:public_port
+# If you're building a Facebook connect site, 
+#    change the value of set_asset_host_to_callback_url to false
+# To develop for the new profile design, add the following key..
+# api: new
+# remove the key or set it to anything else to use the old facebook design.
+# This should only be necessary until the final version of the new profile is released.
+
+development:
+  app_id: 142734819124899
+  api_key: 5be345c060800a87d2b267a86957bbde
+  secret_key: f505c8ca49f7330b392b1dfeb9163c90
+  callback_url: http://localhost:3000/
+  namespace: thingspotter_dev
+
+test:
+  api_key: 
+  secret_key: 
+  canvas_page_name: 
+  callback_url:
+
+staging:
+  app_id: 265881436784759
+  api_key: 
+  secret_key: b824f99f231a3a38f054415038ef2f8e
+  callback_url: http://www.thingspotter.com:8129/
+  namespace: thingspotter_staging
+
+production:
+  app_id: 195135130526694
+  api_key: 28aac256bbbe09dcae1eb7086ae1c326
+  secret_key: c120c6d80ba02a0b93c8adc4aa578136
+  callback_url: http://www.thingspotter.com/
+  namespace: thingspotter

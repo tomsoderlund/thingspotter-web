@@ -1,0 +1,73 @@
+<h1>Settings</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+<table>
+	<tr>
+		<td><%= f.label :email %>:</td>
+		<td><%= f.text_field :email %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :gender_id %>:</td>
+		<td><%= f.select :gender_id, User.gender_list %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :born_at, 'Birthday' %>:</td>
+		<td><%= f.date_select :born_at, :start_year => Time.now.year - 110, :end_year => Time.now.year %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :country_id %>:</td>
+		<td><%= f.select :country_id, Country.short_list %></td>
+	</tr>
+</table>
+
+<h2>Categories of Interest</h2>
+
+<%= f.hidden_field :tag_list %>
+<%= render :partial => 'common/tag_labels', :locals => { :tag_list => @user.tag_list.to_s, :tag_field => 'user_tag_list', :read_only => false } %>
+
+<h2>Preferences</h2>
+
+<table>
+	<!-- <tr>
+		<td><%= f.label :language_id %>:</td>
+		<td><%= f.select :language_id, Language.short_list %></td>
+	</tr> -->
+	<tr>
+		<td><%= f.label :timezone_id %>:</td>
+		<td><%= f.select :timezone_id, User.timezone_list %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :currency_id, 'Show prices in' %>:</td>
+		<td><%= f.select :currency_id, User.currency_list %></td>
+	</tr>
+</table>
+
+<h2>Notifications</h2>
+
+<table>
+	<tr>
+		<td><%= f.check_box :post_to_facebook %> <%= f.label :post_to_facebook, 'Post new things I add to my Facebook wall' %> (can be changed on a case-by-case basis)</td>
+		<td></td>
+	</tr>
+	<!-- <tr>
+		<td><%= f.check_box :post_to_twitter %> <%= f.label :post_to_twitter, 'Post updates to my Twitter feed' %> (can be disabled on a case-by-case basis)</td>
+		<td></td>
+	</tr> -->
+	<tr>
+		<td><%= f.check_box :email_notifications %> <%= f.label :email_notifications, 'Receive Thingspotter notifications on email' %></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.check_box :email_newsletter %> <%= f.label :email_newsletter, 'Receive the Thingspotter email newsletter' %></td>
+		<td></td>
+	</tr>
+</table>
+
+<div class="menu">
+<%= f.submit 'Save' %> <%= link_to 'Cancel', spots_path, :class => 'menu cancel' %>
+<%= link_to('Delete User', @user, :confirm => 'Delete user 4-ever. Are you sure?', :method => :delete) if is_admin? %>
+</div>
+
+<% end %>

@@ -1,0 +1,75 @@
+<div class="white_frame">
+
+<%= link_to_function(image_tag(@thing.photo_path(:web_big), :class => 'size_web_big clickable'), "recordOutboundLink('" + @thing.primary_url + "', '" + (@thing.primary_spot.store.nil? ? "(none)" : @thing.primary_spot.store.name) + "', '" + (@thing.brand.nil? ? "(none)" : @thing.brand_name) + "', '" + @thing.name_with_brand + "', " + @thing.id.to_s + ")") %>
+
+<div id="right_column">
+	<h1><% if @thing.brand %><%= link_to @thing.brand.name, "/spots?search=#{CGI::escape(@thing.brand.name)}", :class => 'brand' %> <% if is_admin? %><%= link_to '(Edit brand)', edit_brand_path(@thing.brand) %> <% end %><% end %><%= h(@thing.name) %></h1>
+	
+	<div class="spots" id="vendor_links">
+	<%= render :partial => 'spots/vendor_link', :collection => @thing.spots %>
+	<%= link_to('Add new website/price', new_spot_path(:thing => @thing)) %>
+	</div>
+	
+	<hr>
+
+	<div id="action_buttons">
+	<h3>Spot</h3>
+	<%= render :partial => 'spots/iconset', :locals => { :spot => @thing.find_spot(current_user, true), :spot_index => 0, :always_show => true } %>
+	<% if (current_user && !current_user.collections.empty?) %>
+	<h3>Add to Collection</h3>
+	<%= render :partial => 'collection_selector' %>
+	<% end %>
+	<h3>Share</h3>
+	<%= render :partial => 'layouts/social_media_share_links', :locals => { :url => thing_url(@thing), :text => @thing.name_with_brand + ' on Thingspotter' } %>
+	</div>
+	
+	<hr>
+	
+	<div id="related_things">
+	<h3>Related Things</h3>
+	<%= render :partial => 'things/mini_list', :locals => { :things => @thing.related_things[0..2] } %>
+	</div>
+
+	<hr>
+
+	<p><%= simple_format h(@thing.description) %></p>
+	
+	<%= render :partial => 'common/tag_labels', :locals => { :tag_list => @thing.tag_list.to_s, :tag_field => 'spot_thing_attributes_tag_list', :read_only => true } %>
+
+	<div class="menu">
+	<% if (can_edit_thing?(@thing)) %>
+	<%= link_to('Edit', edit_spot_path(@thing.find_spot(current_user, true)), :class => 'menu') %>
+	<%= link_to('Delete', @thing.find_spot(current_user, true), :confirm => 'This will delete the spot, and also the thing if you are the only one that spotted it. Continue?', :method => :delete, :class => 'menu cancel') %>
+	<% end %>
+	<% if is_admin? %>
+	<%= link_to_function 'Merge', "var thing_to_url=prompt('Enter the URL of the thing to merge into. Note: this thing will be deleted.', 'http://'); if (thing_to_url != null && thing_to_url != '') { window.location = ('" + thing_url(@thing) + "' + '/merge?thing_to_url=' + thing_to_url); }", { :class => 'menu' } %>
+	<%= link_to_remote 'Featured', { :url => toggle_featured_thing_path(@thing), :method => :put }, { :class => 'menu' } %>
+	<% end %>
+	</div>
+
+</div>
+
+<div class="thing_summary"><span class="icon spot"><%=
+@thing.spots.count %></span><span class="icon want"><%=
+@thing.wanted_count %></span><span class="icon own"><%=
+@thing.owned_count %></span><span class="icon recommend"><%=
+@thing.recommended_count %></span><span class="icon comment"><%=
+@thing.comments.count %></span></div>
+
+<hr class="thing">
+
+<div id="events_box">
+	<h3>Events</h3>
+	<ul class="spots" id="spots_comments_list">
+	<%= render :partial => 'spots/list_item', :collection => @thing.spots %>
+	<%= render :partial => 'comments/list_item', :collection => @thing.comments %>
+	</ul>
+	
+	<% if (current_user) %>
+	<div>
+	<%= render :partial => 'comments/form_compact' %>
+	</div>
+	<% end %>
+</div>
+
+</div>

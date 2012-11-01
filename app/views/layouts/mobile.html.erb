@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title><%= @page_title %></title>
+<meta name="description" content="<%= @page_description %>">
+<meta name="keywords" content="<%= @page_keywords %>">
+<meta name="viewport" content="width=368;"/>
+<%= stylesheet_link_tag 'common', 'mobile' %>
+<%= render :partial => 'layouts/font_system' %>
+<%= javascript_include_tag 'prototype', 'effects', 'controls', 'http://connect.facebook.net/en_US/all.js', 'application' %>
+<%#= csrf_meta_tags %>
+<link rel="icon" href="/images/thingspotter_icon_16px.ico" type="image/x-icon">
+<%= render :partial => 'layouts/google_analytics' %>
+</head>
+
+<body>
+	
+<%= render :partial => 'layouts/facebook_connect' %>
+
+<div id="page_content">
+<%= yield %>
+</div>
+
+<%= render :partial => 'layouts/menu_bar' %>
+<%#= render :partial => 'layouts/side_box' %>
+<%= render :partial => 'layouts/search_box' %>
+<%= render :partial => 'layouts/logo' %>
+<%= render :partial => 'users/import_friends_box' if current_user && !session["friends_imported"] %>
+<%#= render :partial => 'layouts/social_media_box' %>
+<%= render :partial => 'layouts/login_box' %>
+<%= render :partial => 'layouts/affiliate_system' %>
+
+<div id="message_notice" <%= 'style="display:none;"' if !flash[:notice] %>><%= flash[:notice] %></div>
+<div id="message_error" <%= 'style="display:none;"' if !flash[:error] %>><%= flash[:error] %></div>
+
+<% if @welcome_new_user_text %><%= render :partial => 'common/welcome_new_user' %><% end %>
+<% if @beta_invitation %><%= render :partial => 'invitations/beta_info_box' %><% end %>
+
+</body>
+
+</html>

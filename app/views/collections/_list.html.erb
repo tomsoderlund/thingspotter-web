@@ -1,0 +1,5 @@
+<% collections.each do |collection| %>
+<%= render :partial => 'collection_box', :locals => { :collection => collection, :photo_style => 'web_thumb', :col => cycle(1, 2, 3, 4), :row => cycle(1,1,1,1, 2,2,2,2, 3,3,3,3, 4,4,4,4, 5,5,5,5, :name => "row") } %>
+<% end %>
+
+<%= will_paginate(collections) %>

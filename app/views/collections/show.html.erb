@@ -1,0 +1,19 @@
+<div id="collection_info">
+<h1><%=h @collection.name %></h1>
+<table id="collection_owner_info">
+<%= render :partial => 'users/user_info_box', :locals => { :user => @collection.user } %>
+</table>
+<p><%=h @collection.description %></p>
+</div>
+
+<div id="collection_things">
+<%= render 'collection_things/list', :collection_things => @collection.collection_things %>
+</div>
+
+<div class="menu">
+<% if (can_edit_thing?(@collection)) %>
+<%= link_to 'Edit Collection', edit_collection_path(@collection), :class => 'menu' %>
+<% end %>
+
+<%= link_to 'Back', collections_path, :class => 'menu cancel' %>
+</div>

@@ -1,0 +1,11 @@
+<%= render :partial => 'email_header' %>
+
+<p><span style="font-family: Gesta,Trebuchet MS,Geneva,sans-serif; font-size: 10pt; color: rgb(102, 102, 102);"><span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">Hello!</span></span></p>
+<p>I'd like to invite you to the new social product sharing service <span style="font-weight: bold;">Thingspotter</span>.</p>
+<p>How does it work? In short, Thingspotter helps you to gather and organize your favorite products that you find online (and eventually IRL). With a simple <span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">&quot;BOOKMARKLET&quot;</span> in your browser, you can select an image you find on the web and save it to Thingspotter with a few clicks (click first on the Bookmarklet and then on the image you wish to add). You can also use Thingspotter to recommend things to your friends, to add things to your personal wishlist, and for tagging things that you already own.<br></p>
+<p>I hope you will love Thingspotter as much as I do!</p>
+<p><span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">START</span> by clicking here: <span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">[<a href="<%= @signup_url %>" style="color: rgb(216, 94, 137);">THINGSPOTTER START</a>]</span></p>
+<p>Regards,</p>
+<p><%= @from_user_name %></p>
+
+<%= render :partial => 'email_footer' %>

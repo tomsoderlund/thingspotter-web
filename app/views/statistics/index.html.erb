@@ -1,0 +1,36 @@
+<div class="white_frame">
+<h1>Thingspotter Statistics</h1>
+
+<div id="sub_menu">
+Date range:
+<%= link_to 'Today', statistics_path(:start => @today, :end => (@today + 1)) %>/<%= link_to 'Yesterday', statistics_path(:start => (@today - 1), :end => @today) %>
+|
+<%= link_to 'This Month', statistics_path(:start => Date.new(@today.year, @today.month, 1), :end => Date.new(@today.year, @today.month + 1, 1)) %>/<%= link_to 'Last Month', statistics_path(:start => Date.new(@today.year, @today.month - 1, 1), :end => Date.new(@today.year, @today.month, 1)) %>
+|
+<%= link_to 'This Year', statistics_path(:start => Date.new(@today.year, 1, 1), :end => Date.new(@today.year + 1, 1, 1)) %>/<%= link_to 'Last Year', statistics_path(:start => Date.new(@today.year - 1, 1, 1), :end => Date.new(@today.year, 1, 1)) %>
+</div>
+
+<p>Date range: <%= @date_range %>.</p>
+
+<h2>Users</h2>
+<table>
+<tr><td>Registered users:</td><td><%= @users_reg %></td><td>within date range:</td><td><%= @users_reg_range %></td></tr>
+<tr><td>- Users without invitation:</td><td>-<%= @users_no_invite %></td></tr>
+<tr><td>Active users (have created spots):</td><td><%= @users_active %></td><td>within date range:</td><td><%= @users_active_range %></td></tr>
+<tr><td>All users including FB friends:</td><td><%= @users_total %></td></tr>
+<tr><td>Invitations sent:</td><td><%= @invitations %></td><td>within date range:</td><td><%= @invitations_range %></td></tr>
+<tr><td>Users being followed:</td><td><%= @users_followed %></td><td>followed by:</td><td><%= @users_following %></td><td>users</td></tr>
+</table>
+
+<h2>Activity Within Date Range</h2>
+<table>
+<tr><td>Nr of new spots:</td><td><%= @activity_newspots %></td><td>by</td><td><%= @activity_newspots_users %></td><td>users</td></tr>
+<tr><td>Nr of re-spots:</td><td><%= @activity_respots %></td><td>by</td><td><%= @activity_respots_users %></td><td>users</td></tr>
+<tr><td>Nr of wishlisted things:</td><td><%= @activity_wishlisted %></td><td>by</td><td><%= @activity_wishlisted_users %></td><td>users</td></tr>
+<tr><td>Nr of owned things:</td><td><%= @activity_owned %></td><td>by</td><td><%= @activity_owned_users %></td><td>users</td></tr>
+<tr><td>Nr of recommendations:</td><td><%= @activity_recommendations %></td><td>by</td><td><%= @activity_recommendations_users %></td><td>users</td></tr>
+<tr><td>Nr of comments:</td><td><%= @activity_comments %></td><td>by</td><td><%= @activity_comments_users %></td><td>users</td></tr>
+<tr><td>Nr of new user followings:</td><td><%= @activity_followers %></td><td>by</td><td><%= @activity_followers_users %></td><td>users</td></tr>
+</table>
+
+</div>

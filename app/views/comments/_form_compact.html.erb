@@ -1,0 +1,23 @@
+<% remote_form_for(@comment, :html => { :id => 'comment_form' }, :loading => "$('comment_comment').disable()", :loaded => "$('comment_comment').enable()" ) do |fc| %>
+  <%= fc.error_messages %>
+  <%= fc.hidden_field :thing_id %>
+  <p>
+    <%= fc.label :comment, 'Comment:' %><br/>
+    <%= fc.text_area :comment, :class => 'comment_box' %>
+  </p>
+<% end %>
+
+<% javascript_tag do -%>
+
+$('comment_comment').observe('keyup', onKeyPress);
+
+function onKeyPress(event) {
+	var keyCode = (event.charCode ? event.charCode : event.keyCode);
+	if (keyCode == 13) {
+		event.element().value = event.element().value.substr(0, event.element().value.length-1);
+		$('comment_form').request();
+		$('comment_comment').disable(); // loading/loaded stopped working after text_area
+	}
+}
+
+<% end -%>

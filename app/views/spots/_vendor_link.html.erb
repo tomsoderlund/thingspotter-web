@@ -1,0 +1,3 @@
+<% if vendor_link.website_url %>
+<p><%= link_to_function(((vendor_link.price ? price_formatted(vendor_link) : 'Find it') + ' at ' + (vendor_link.store ? vendor_link.store.name : website_from_url(vendor_link.website_url))), "recordOutboundLink('" + vendor_link.website_url + "', '" + (vendor_link.store.nil? ? "(none)" : vendor_link.store.name) + "', '" + (vendor_link.thing.brand.nil? ? "(none)" : vendor_link.thing.brand_name) + "', '" + vendor_link.thing.name_with_brand + "', " + vendor_link.thing.id.to_s + ")", :class => 'vendor_link') %><% if is_admin? %> <%= link_to '(Edit store)', edit_store_path(vendor_link.store) %><% end %></p>
+<% end %>

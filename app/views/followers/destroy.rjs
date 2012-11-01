@@ -1,0 +1,2 @@
+page.replace_html 'follow' + flash[:user_id].to_s, flash[:notice]
+flash.discard

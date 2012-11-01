@@ -1,0 +1,11 @@
+<%= render :partial => 'email_header' %>
+
+<p><span style="font-family: Gesta,Trebuchet MS,Geneva,sans-serif; font-size: 10pt; color: rgb(102, 102, 102);"><span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">Hej!</span></span></p>
+<p>Jag vill bjuda in dig till den nya sociala produkt-tipsar-tj&auml;nsten <span style="font-weight: bold;">Thingspotter</span>.</p>
+<p>Hur fungerar det? I korthet hj&auml;lper Thingspotter dig att samla in och organisera bilder av dina favoritsaker p&aring; n&auml;tet (och s&aring; sm&aring;ningom &auml;ven IRL). Med en enkel <span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">&quot;BOOKMARKLET&quot;</span> i din webbl&auml;sare kan du v&auml;lja en bild som du hittar p&aring; n&auml;tet och spara den p&aring; Thingspotter med bara ett par klick (klicka d&aring; f&ouml;rst p&aring; Bookmarkleten och sedan p&aring; den bild du vill l&auml;gga till). Du kan &auml;ven anv&auml;nda Thingspotter f&ouml;r att rekommendera saker till dina v&auml;nner, f&ouml;r att l&auml;gga till saker som du vill k&ouml;pa till din personliga &ouml;nskelista, samt f&ouml;r taggning av saker som du redan &auml;ger.<br></p>
+<p>Jag hoppas att du kommer att gilla Thingspotter lika mycket som jag g&ouml;r!</p>
+<p><span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">B&Ouml;RJA</span> genom att klicka h&auml;r: <span style="font-family: 'Museo Slab',Courier; text-transform: uppercase; font-size: 14pt; color: rgb(252, 161, 36);">[<a href="<%= @signup_url %>" style="color: rgb(216, 94, 137);">THINGSPOTTER START</a>]</span></p>
+<p>H&auml;lsningar,</p>
+<p><%= @from_user_name %></p>
+
+<%= render :partial => 'email_footer' %>

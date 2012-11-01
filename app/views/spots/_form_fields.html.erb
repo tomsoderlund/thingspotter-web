@@ -1,0 +1,147 @@
+<% if @edit_thing %>
+<div><%= f_thing.text_area :name, :cols => 25, :rows => 2, :class => 'large thing_form_field', :onkeyup => 'limitLength(this, 64)' %></div>
+<% else %>
+<h1><%= h(@spot.thing.name_with_brand) %></h1>
+<% end %>
+
+<div>
+<%= f.hidden_field :store_id %>
+<%= f.hidden_field :is_wanted %>
+<%= f.hidden_field :is_owned %>
+<p><%= image_toggler_tag 'spot_is_wanted', @spot.is_wanted, 'I want this', false %>
+<%= image_toggler_tag 'spot_is_owned', @spot.is_owned, 'I own this', false %></p>
+
+<% if (@spot.new_record?) %>
+<p><%= image_toggler_tag 'post_to_your_facebook', current_user.post_to_facebook, 'Post to your Facebook Wall' %></p>
+<% end %>
+</div>
+
+<% if @edit_thing %>
+<%= f_thing.hidden_field :tag_list %>
+<%= render :partial => 'common/tag_labels', :locals => { :tag_list => @spot.thing.tag_list.to_s, :tag_field => 'spot_thing_attributes_tag_list', :read_only => false } %>
+<% end %>
+
+<% if (current_user && !current_user.collections.empty?) %>
+<h3>Add to Collection</h3>
+<%= select('collection_thing', 'collection_id', Collection.short_list(current_user), {:prompt => '(Select a collection)'}) %>
+<% end %>
+
+<%= link_to 'Additional information', '#', :class => 'optional_section_header', :id => 'section_additional_header', :onclick => "toggleOptionalSection('additional');" %>
+<div class="optional_section" id="section_additional" style="display:none">
+
+<% if @edit_thing %>
+<p>
+<%= f_thing.text_area :description, :cols => 38, :rows => 3, :class => 'thing_form_field' %>
+</p>
+<% end %>
+
+<table>
+<% if @edit_thing %>
+<tr><td><%= f_thing.label :brand_name, 'Brand:' %></td>
+<td><%= f_thing.text_field :brand_name, :size => 25, :onchange => 'checkBrandName()' %></td></tr>
+<% end %>
+<tr><td><%= f.label :website_url, 'Website:' %></td>
+<td><%= f.text_field :website_url, :size => 25, :onfocus => "$('web_options_popup').show()" %>
+<div class="mini_popup" id="web_options_popup" style="display:none;"><%= f.check_box :is_website_store %> You can buy it from here<br/>
+<%= f.check_box :is_website_productpage %> Official product website</div></td></tr>
+<tr><td><%= f.label :price, 'Price:' %></td>
+<td><%= f.text_field :price, :size => 10 %> <%= f.select :currency_id, User.currency_list %></td></tr>
+</table>
+</div>
+
+<% if (@spot.new_record?) %>
+<%= link_to 'Recommend to someone', '#', :class => 'optional_section_header', :id => 'section_recommend_header', :onclick => "toggleOptionalSection('recommend', 'spot_recommend_to_users');setCommentExplanation();" %>
+<div class="optional_section" id="section_recommend" style="display:none">
+<p>
+<%= f.label :recommend_to_users, 'Recommend to:' %> <%= text_field_with_auto_complete :spot, :recommend_to_users, { :size => 25, :class => 'thing_form_field' }, { :url => friends_path(:js), :method => :get, :param_name => 'name' } %><%#= f.text_field :recommend_to_users, :size => 25 %>
+</p>
+<%= image_toggler_tag 'post_to_their_facebook', current_user.post_to_facebook, 'Post to their Facebook Wall' %>
+</div>
+<% end %>
+
+<% f.fields_for :comment do |f_comment| %>
+<p>
+<%= f_comment.text_area :comment, :cols => 38, :rows => 3, :class => 'comment_box' %>
+</p>
+<% end %>
+
+<%= javascript_include_tag 'hintvalue' %>
+<% javascript_tag do -%>
+
+	var commentHintValue;
+
+	function setCommentExplanation() {
+		header = $('section_recommend_header');
+		if (header.classNames() == 'optional_section_header') {
+			// Recommend not open
+			commentHintValue = new HintValue('spot_comment_attributes_comment', {value: 'Your personal comment'});
+		}
+		else {
+			// Recommend IS open
+			commentHintValue = new HintValue('spot_comment_attributes_comment', {value: 'Comment for friend'});
+		}
+	}
+
+	function checkBrandName() {
+		var posStart = $('spot_thing_attributes_name').value.search(new RegExp($('spot_thing_attributes_brand_name').value.toLowerCase(), 'i'));
+		if ($('spot_thing_attributes_brand_name').value != "" && posStart != -1) {
+			var oldTitle = $('spot_thing_attributes_name').value;
+			var newTitle = oldTitle.substring(0, posStart) + oldTitle.substring(posStart + $('spot_thing_attributes_brand_name').value.length, oldTitle.length);
+			newTitle = trim(newTitle);
+			if (confirm('Since the brand is set to "' + $('spot_thing_attributes_brand_name').value + '", do you want to change the product title to just "' + newTitle + '"?')) {
+				$('spot_thing_attributes_name').value = newTitle;
+			}
+		}
+	}
+	
+	function validateField(field, args) {
+		// Changed = Edited
+		field.removeClassName('unedited');
+		field.addClassName('edited');
+
+		// Field length
+		if (args && args.maxLength) {
+			if (field.value.length > args.maxLength) {
+				field.removeClassName('edited');
+				field.addClassName('error');
+			}
+			else {
+				field.removeClassName('error');
+				field.addClassName('edited');
+			}
+		}
+	}
+	
+	function resizeFont(field) {
+		minSize = 6; //pt
+		maxSize = 12; //pt
+		newSize = minSize + (64 - field.value.length) * 0.13;
+		newSize = Math.max(newSize, minSize);
+		field.setStyle({ fontSize: (newSize + 'pt') });
+	}
+	
+	function limitLength(field, maxLength) {
+		if (field.value.length > maxLength)
+			field.value = trim(field.value.substr(0, maxLength));
+	}
+
+	// Init
+	// Open OptionalSections if they contain content
+	Event.observe(window, 'load', function() {
+		if ($('spot_thing_attributes_description').value != '' || $('spot_thing_attributes_brand_name').value != '' || <%= (@edit_thing ? 'false' : 'true') %>) {
+			toggleOptionalSection('additional');
+		}
+		
+		<% if @mode == 'recommend' %>
+			toggleOptionalSection('recommend', 'spot_recommend_to_users');
+		<% end %>
+
+		new HintValue('spot_thing_attributes_name', {value: 'Thing Title'});
+		new HintValue('spot_thing_attributes_description', {value: 'Product description and features'});
+		setCommentExplanation();
+		
+		limitLength($('spot_thing_attributes_name'), 64);
+		checkBrandName();
+	});
+	
+<% end -%>

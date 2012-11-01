@@ -1,0 +1,1 @@
+<%= text_field_tag 'bookmarklet', "javascript:window.open('" + root_url.slice(0, root_url.length-1) + "/spots/new?imagespotter=true&url='+escape(document.location.href));", :size => 40 %>

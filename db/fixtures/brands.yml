@@ -1,0 +1,19 @@
+Nike:
+  name: Nike
+  website: www.nike.com
+  search_url: http://store.nike.com/us/en_us/?sitesrc=uslp&l=shop,search,searchList-%s
+
+H&M:
+  name: H&M
+  website: www.hm.com
+  search_url: 
+
+Lindex:
+  name: Lindex
+  website: www.lindex.com
+  search_url: 
+
+Black Milk:
+  name: Black Milk
+  website: www.blackmilkclothing.com
+  search_url: 

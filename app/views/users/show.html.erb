@@ -1,0 +1,26 @@
+<div id="user_profile">
+<div id="user_photo" class="float_left"><fb:profile-pic uid="<%= @user.fb_user_id %>" size="square" facebook-logo="false" linked="false"></fb:profile-pic></div>
+<h1><%=h @user.name %></h1>
+<%= render 'followers/follow_button', :user => @user %>
+<%= link_to('Facebook profile (admins only)', "https://www.facebook.com/profile.php?id=#{@user.fb_user_id}", :target => 'thingspotter_external') if is_admin? %>
+<p>Categories of interest: <%= @user.tag_list.to_s.titleize %></p>
+<% if @wishlist_url %>
+<div id="wishlist_box">
+<p>Public Wishlist URL : <%= text_field_tag 'wishlist', @wishlist_url, :size => 60 %></p>
+<%= render :partial => 'layouts/social_media_share_links', :locals => { :url => @wishlist_url, :text => 'Check out my wishlist on Thingspotter' } %>
+</div>
+<% end %>
+</div>
+
+<div id="sub_menu">
+<span class="spacer">Filter by:</span>
+<%= link_to 'Spotted', user_path, :class => 'menu_item all' + (@view == 'all' ? ' active' : '') %>
+<%= link_to 'Wishlist', user_path + '/wishlist', :class => 'menu_item wishlist' + (@view == 'wishlist' ? ' active' : '') %>
+<%= link_to 'Owned', user_path + '/owned', :class => 'menu_item owned' + (@view == 'owned' ? ' active' : '') %>
+<%= link_to 'Recommended', user_path + '/recommended', :class => 'menu_item recommended' + (@view == 'recommended' ? ' active' : '') %>
+</div>
+
+<div id="user_content">
+<%= render 'spots/list', :spots => @spots %>
+<%= will_paginate(@spots) %>
+</div>

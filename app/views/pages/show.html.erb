@@ -1,0 +1,8 @@
+<div class="white_frame">
+<h1><%= h @page.title %></h1>
+<p><%= @page.body %></p><% #simple_format %>
+
+<%# if is_admin? %>
+<%#= link_to 'Edit', edit_page_path(@page) %>
+<%# end %>
+</div>

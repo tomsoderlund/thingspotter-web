@@ -1,0 +1,10 @@
+<%= render :partial => 'email_header' %>
+
+Hi <%= @user.name %>!
+
+<%= @comment.user.name %> (<%= @user_url %>) commented on <%= @comment.thing.name_with_brand %> (<%= @thing_url %>):
+"<%= @comment.comment %>"
+
+/The Thingspotter team
+
+<%= render :partial => 'email_footer' %>

@@ -1,0 +1,3 @@
+<table>
+<% friends.each do |friend| %><%= render :partial => 'users/user_info_box', :locals => { :user => friend } %><% end %>
+</table>

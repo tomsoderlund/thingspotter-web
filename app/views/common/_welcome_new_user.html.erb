@@ -1,0 +1,7 @@
+<div class="info_box" id="info_box">
+<p class="large"><%= @welcome_new_user_text %></p>
+
+<p><%= link_to('Learn More', '/intro', :class => 'menu') %></p>
+
+<div class="delete_button"><%= link_to_function(image_tag('icon_delete_off.png'), "$('info_box').hide();") %></div>
+</div>

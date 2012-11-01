@@ -1,0 +1,18 @@
+<div class="info_box" id="info_box">
+<%= link_to_function('', "$('info_box').hide();", :class => 'close_button') %>
+
+<h1>Invite a Friend</h1>
+<% remote_form_for(@invitation, :loading => "$('new_invitation').disable()", :loaded => "$('new_invitation').enable()") do |f| %>
+<%= f.error_messages %>
+<%= hidden_field_tag(:invitation_type, 1) %>
+<%= hidden_field_tag(:name, @user.name) if @user %>
+  <p><%= label_tag :name, 'Full name:' %> <b><%= @user.name if @user %></b></p>
+  <p><%= f.label :recipient_email, "Email address to invite:" %><br/><%= f.text_field :recipient_email %></p>
+  <p><%= f.submit "Send Invitation" %></p>
+<% end %>
+
+<% javascript_tag do -%>
+$('invitation_recipient_email').focus();
+<% end -%>
+
+</div>

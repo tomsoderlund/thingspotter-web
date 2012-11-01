@@ -1,0 +1,18 @@
+<div class="thing_box<%= (current_user && spot.recommended_to_user == current_user) ? ' recommended': '' %><%=
+spot.thing.is_featured ? ' featured': '' %> col<%= col %> row<%= row %>">
+<%=
+link_to image_tag(spot.thing.photo_path(photo_style), :class => 'size_' + photo_style), spot.thing, :onmouseover => "hideAllIconSets();$('iconset" + spot_index.to_s + "').show();" %><% 
+if (false && spot.recommended_to_user != nil) %><div class="icon_recommended"></div><% end %><%=
+render :partial => 'spots/iconset', :locals => { :spot => spot, :spot_index => spot_index, :always_show => false } %><div class="title"><%= 
+(link_to h(spot.thing.brand.name), spot.thing, :class => 'brand') + ' ' if spot.thing.brand %><%=
+link_to truncate(h(spot.thing.name), {:length => (26 - spot.thing.brand_name.length)}), spot.thing %></div>
+<div class="thing_summary"><span class="icon spot"><%=
+spot.thing.spots.count %></span><span class="icon want"><%=
+spot.thing.wanted_count %></span><span class="icon comment"><%=
+spot.thing.comments.count %></span></div>
+<% if (spot.price && current_user) %><div class="price"><%=
+price_formatted_in_users_currency(spot, current_user) %></div><% end %><div class="delete_button"><%=
+link_to(image_tag('icon_delete_off.png'), spot, :confirm => 'This will delete the spot, and also the thing if you are the only one that spotted it. Continue?', :method => :delete) if (spot.user == current_user || spot.recommended_to_user == current_user) %></div><% if spot.thing.latest_comment %><div class="latest_comment"><span class="user_photo_small float_left"><fb:profile-pic uid="<%=
+spot.thing.latest_comment.user.fb_user_id %>" size="square" width="20" height="20" facebook-logo="false" linked="false"></fb:profile-pic></span><%=
+user_or_you spot.thing.latest_comment.user %>: <%=
+truncate(h(spot.thing.latest_comment.comment), {:length => 64}) %></div><% end %></div>

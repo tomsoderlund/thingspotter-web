@@ -1,0 +1,34 @@
+<div class="white_frame_intro">
+<%= render :partial => 'progress_menu' %>
+
+<h1 class="intro">Install Bookmarklet</h1>
+
+<p>Welcome to Thingspotter, <%= current_user.name %>!</p>
+
+<% if (detect_browser == 'desktop') %>
+<%= image_tag('arrow_install_bookmarklet.png', :id => 'bookmarklet_arrow', :style => 'display: none;') %>
+<p style="width: 630px;">Now, it is time to install the browser bookmarklet which will make thingspotting really easy. Just drag the button below to the bookmark bar of your browser*. Once installed, you can click the bookmarklet whenever you visit a web page with an interesting product.</p>
+<p><%= render :partial => 'intro/bookmarklet_link' %></p>
+<% else %>
+<p>Now, it is time to install the browser bookmarklet which will make thingspotting really easy. Since you're using a mobile device, you cannot use the full Thingspotter bookmarklet. Instead, copy the code below and create a new bookmark on your device called &quot;+Thingspotter&quot;. Once installed, you can click it whenever you visit a web page with an interesting product!</p>
+<p><%= render :partial => 'intro/bookmarklet_simple_link' %></p>
+<% end %>
+
+<p class="fine_print">*If you can't find your bookmark bar, <%= link_to_function 'click here', "$('help_popup').show()" %>.</p>
+</br>
+<div class="menu">
+<%= button_to 'Continue', intro4_path %>
+</div>
+
+</div>
+
+<div class="white_frame_popup" id="help_popup" style="display: none;">
+<h2 class="intro">Finding the Bookmark Bar</h2>
+<ul>
+<li>Firefox: In the menu, select <em>View&rarr;Toolbars&rarr;Bookmarks Toolbar</em>.</li>
+<li>Chrome: In the menu, select <em>View&rarr;Always Show Bookmark Bar</em>.</li>
+<li>Safari: In the menu, select <em>View&rarr;Show Bookmarks Bar</em>.</li>
+<li>Internet Explorer (9): Click on an empty space on your tab bar and then click on <em>Favorites Bar</em> from the context menu. A checkmark against this entry indicates that the Favorites Bar is enabled and displayed on your browser. When the Favorites Bar is visible, simply drag this button to the bar. The bookmarklet will now be visible when you are browsing the web.</li>
+</ul>
+<p class="fine_print"><%= link_to_function '(Click here to hide this popup)', "$('help_popup').hide()" %></p>
+</div>

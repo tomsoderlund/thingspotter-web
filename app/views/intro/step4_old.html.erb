@@ -1,0 +1,14 @@
+<div class="white_frame_intro">
+<%= render :partial => 'progress_menu' %>
+<%= link_to '', intro2_path, :class => 'intro_button_left' %>
+<%= link_to '', root_path, :class => 'intro_button_home' %>
+
+<h1 class="intro">Now Go Out Thingspotting!</h1>
+
+<p>Now go looking for cool things to spot! Whenever you visit a web page with an interesting product, you can click your Thingspotter bookmarklet.</p>
+
+<p><%= image_tag 'intro_image_howto.png' %></p>
+
+<p><%= link_to('Click here', root_path) %>  to see your personal feed. You can also edit your <%= link_to('Settings', edit_user_path(current_user)) if current_user %> if you want to.</p>
+
+</div>

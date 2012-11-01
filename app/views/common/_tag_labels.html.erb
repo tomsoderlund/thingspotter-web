@@ -1,0 +1,46 @@
+<p id="tag_cloud">
+<% Thing.get_default_tags.each do |tag| %><% if read_only %><span class="tag" id="<%= 'tag_' + tag.name.downcase %>"><%= tag.name %></span><% else %><%= link_to_function(tag.name, "toggleTag(this);", :class => 'tag', :id => 'tag_' + tag.name.downcase) %><% end %><% end %>
+</p>
+
+<% javascript_tag do -%>
+	
+	var tagList = '<%= tag_list %>';
+	var tagField = $('<%= tag_field %>');
+	
+	function toggleTag(elem) {
+		tagWord = elem.innerHTML;
+		if (elem.hasClassName('tag_active')) {
+			// Remove tag
+			elem.removeClassName('tag_active');
+			wordPos = tagField.value.indexOf(tagWord);
+			if (tagField != null)
+				tagField.value = tagField.value.substr(0, wordPos) + tagField.value.substr(wordPos + tagWord.length, tagField.value.length);
+		}
+		else {
+			// Add tag
+			elem.addClassName('tag_active');
+			if (tagField != null && tagField.value.indexOf(tagWord) == -1)
+				tagField.value += ', ' + tagWord;
+		}
+		// Clean up
+		if (tagField != null) {
+			tagField.value = tagField.value.replace(", , ", ", ");
+			if (tagField.value.substr(0, 2) == ', ')
+				tagField.value = tagField.value.substr(2, tagField.value.length);
+		}
+	}
+	
+	function parseTagList() {
+		//alert(tagList.split(', '));
+		tagArray = tagList.split(', ');
+		for(var i = 0; i < tagArray.length; i++) {
+			if ($('tag_' + tagArray[i]) != null) {
+				toggleTag($('tag_' + tagArray[i]));
+			}
+		}
+	}
+	
+	//$$('body')[0].onload = parseTagList;
+	parseTagList();
+	
+<% end -%>

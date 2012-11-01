@@ -1,0 +1,21 @@
+<h1>Listing pages</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Permalink</th>
+    <th>Admin</th>
+  </tr>
+
+<% for page in @pages %>
+  <tr>
+    <td><%= link_to h(page.title), page %></td>
+    <td>/<%=h page.permalink %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %> | <%= link_to 'Delete', page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New page', new_page_path %>

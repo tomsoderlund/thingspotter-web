@@ -1,0 +1,40 @@
+<div class="white_frame_intro">
+<%= render :partial => 'progress_menu' %>
+	
+<h1 class="intro">Sign Up</h1>
+
+<h2>1. Connect to Facebook*</h2>
+
+<% if current_user.nil? %>
+<p><fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large" redirect-uri="<%= "#{$SERVER_URL}/intro/step3" %>"></fb:login-button></p>
+<p class="fine_print">*This is to make it easier for you to find and connect with friends. It is perfectly safe and we promise not to use any of your Facebook data or post to your wall without asking you first.</p>
+<% else %>
+<p class="notice_completed">Done!<%= '*' if current_user.invitation.nil? %> <fb:login-button perms="<%= $FACEBOOK_PERMISSIONS %>" autologoutlink="true" size="large" redirect-uri="<%= "#{$SERVER_URL}/intro/step3" %>"></fb:login-button></p>
+<% end %>
+<script type="text/javascript">
+	FB.Event.subscribe("auth.login", function() {window.location.reload();});
+</script>
+
+<% form_for(@user) do |f| %>
+<%= f.error_messages %>
+<%= hidden_field_tag 'registration', true %>
+<%= f.hidden_field(:invitation_token, {:value => @invitation_token}) if @invitation_token %>
+
+<h2>2. Email Address</h2>
+
+<p><%= f.text_field :email %></p>
+
+<h2>3. Select Categories of Interest</h2>
+
+<div class="right_column">
+<%= f.hidden_field :tag_list %>
+<%= render :partial => 'common/tag_labels', :locals => { :tag_list => @user.tag_list.to_s, :tag_field => 'user_tag_list', :read_only => false } %>
+</div>
+</br>
+<div class="menu">
+<%= f.submit 'Continue' %>
+</div>
+
+<% end %>
+
+</div>

@@ -1,0 +1,11 @@
+<p>Thank you for adding <%= @spot.thing.name_with_brand %>!</p>
+
+<div id="action_buttons">
+<%= render :partial => 'layouts/social_media_share_links', :locals => { :url => thing_url(@spot.thing), :text => @spot.thing.name_with_brand + ' on Thingspotter' } %>
+
+<%= javascript_include_tag 'imagespotter' %>
+<div class="menu">
+<%= link_to_function 'Show on Thingspotter', "window.open('#{thing_url(@spot.thing)}', 'thingspotter_main');closeImageSpotterFrame();", :class => 'menu' %>
+<%= link_to_function 'Close', 'closeImageSpotterFrame();', :class => 'menu cancel' %>
+</div>
+</div>

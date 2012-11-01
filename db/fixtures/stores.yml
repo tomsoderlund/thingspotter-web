@@ -1,0 +1,23 @@
+ThinkGeek:
+  name: ThinkGeek
+  url_key: thinkgeek.com
+  url_data: 
+  body_data: "ThinkGeek \:\: %n"
+
+Amazon:
+  name: Amazon
+  url_key: amazon.com
+  url_data: 
+  body_data: "Amazon.com\: %n\: %i"
+
+Lindex:
+  name: Lindex
+  url_key: lindex.com
+  url_data: 
+  body_data: "%n | Lindex Shop Online | artnr\: %i"
+
+Uncrate:
+  name: Uncrate
+  url_key: uncrate.com
+  url_data: 
+  body_data: %s | Uncrate

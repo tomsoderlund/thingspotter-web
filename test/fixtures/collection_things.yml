@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  collection_id: 1
+  thing_id: 1
+  position: 1
+
+two:
+  collection_id: 1
+  thing_id: 1
+  position: 1

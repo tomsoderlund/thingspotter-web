@@ -1,0 +1,20 @@
+<div class="thing_box col<%= col %> row<%= row %>"><%
+
+spot = collection_thing.thing.find_spot(current_user, true)
+
+%><%=
+link_to image_tag(collection_thing.thing.photo_path('web_thumb'), :class => 'size_web_thumb'), collection_thing.thing, :onmouseover => "hideAllIconSets();$('iconset" + collection_thing.id.to_s + "').show();" %><% 
+if (false && spot.recommended_to_user != nil) %><div class="icon_recommended"></div><% end %><%=
+render :partial => 'spots/iconset', :locals => { :spot => spot, :spot_index => collection_thing.id, :always_show => false } %><div class="title"><%= 
+(link_to h(collection_thing.thing.brand.name), collection_thing.thing, :class => 'brand') + ' ' if collection_thing.thing.brand %><%=
+link_to truncate(h(collection_thing.thing.name), {:length => (26 - collection_thing.thing.brand_name.length)}), collection_thing.thing %></div>
+<div class="thing_summary"><span class="icon spot"><%=
+collection_thing.thing.spots.count %></span><span class="icon want"><%=
+collection_thing.thing.wanted_count %></span><span class="icon comment"><%=
+collection_thing.thing.comments.count %></span></div>
+<% if (current_user && spot.price) %><div class="price"><%=
+price_formatted_in_users_currency(spot, current_user) %></div><% end %><div class="delete_button"><%=
+link_to(image_tag('icon_delete_off.png'), collection_thing, :confirm => 'Remove this thing from the collection?', :method => :delete) %></div><% if collection_thing.thing.latest_comment %><div class="latest_comment"><span class="user_photo_small float_left"><fb:profile-pic uid="<%=
+collection_thing.thing.latest_comment.user.fb_user_id %>" size="square" width="20" height="20" facebook-logo="false" linked="false"></fb:profile-pic></span><%=
+user_or_you collection_thing.thing.latest_comment.user %>: <%=
+truncate(h(collection_thing.thing.latest_comment.comment), {:length => 64}) %></div><% end %></div>

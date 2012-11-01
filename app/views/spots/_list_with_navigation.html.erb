@@ -1,0 +1,9 @@
+<div id="spots_list">
+<%= render 'spots/list', :spots => @spots %>
+</div>
+
+<div id="loadmore_holder">
+<%= render 'spots/list_navigationbar' %>
+</div>
+
+<%#= will_paginate((@spots || spots)) %>

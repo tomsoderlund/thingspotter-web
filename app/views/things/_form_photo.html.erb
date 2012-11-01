@@ -1,0 +1,83 @@
+<div id="thing_photo_box" class="size_<%= photo_size %>" onclick="showImagePicker();">
+<% if thing.has_photo? %>
+<%= image_tag thing.photo_path(photo_style), :id => 'thing_photo', :class => 'size_' + photo_size %>
+<div id="image_click_to_change" class="image_click_to_change_<%= photo_style %>">Click to change image</div>
+<% elsif @spot.thing.photo_url %>
+<%= image_tag @spot.thing.photo_url, :id => 'thing_photo', :class => 'size_' + photo_size %>
+<div id="image_click_to_change" class="image_click_to_change_<%= photo_style %>">Click to change image</div>
+<% else %>
+<%= image_tag productphoto_placeholder_photo_url(photo_style), :id => 'thing_photo', :class => 'size_' + photo_size %>
+<div id="image_click_to_change" class="image_click_to_change_<%= photo_style %>">Click to add image</div>
+<% end %>
+</div>
+
+<div id="image_forms" class="image_forms_<%= photo_style %>" style="display:none;">
+	<ul id="tab_menu">
+	<li id="nav_file" class="active"><a href="#"onclick="this.blur(); return setTabActive('file');">Image File</a></li>
+	<li id="nav_url" class=""><a href="#"onclick="this.blur(); return setTabActive('url');">Web Image</a></li>
+	</ul>
+
+	<!-- Image File --> 
+	<div id="file_placeholder">
+	<p class="form_instruction">Add a photo from your computer</p> 
+  	<%= f.label :photo, 'Photo upload' %><br/><%= f.file_field :photo %>
+	</div>
+
+	<!-- URL --> 
+	<div id="url_placeholder">
+	<p class="form_instruction">Add a photo from the web</p> 
+  	<%= f.label :photo_url, 'Photo URL' %><br/><%= f.text_field :photo_url, :size => 24 %>
+	<input type="button" value="Preview" id="button_done" onclick="hideImagePicker();"/>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+var maxWidth = 200;
+var maxHeight = 200;
+
+function showImagePicker() {
+    $('thing_photo_box').hide();
+    $('image_forms').show();
+    $('url_placeholder').hide();
+
+	if ($('spot_thing_attributes_photo_url').value != '') {
+		setTabActive('url');
+		$('spot_thing_attributes_photo_url').focus();
+	}
+	else {
+		setTabActive('file');
+	}
+}
+
+function hideImagePicker() {
+    $('image_forms').hide();
+    $('thing_photo_box').show();
+    //$(placeholderId).src = imageUrl;
+	//spot_thing_attributes_photo_url
+	if ($('spot_thing_attributes_photo_url').value != '')
+		$('thing_photo').src = $('spot_thing_attributes_photo_url').value;
+}
+
+var active_form = 'file';
+var post_types = ["file", "url"];
+
+function setTabActive(id) {
+    $$('#tab_menu li').each(function(el) {
+        el.removeClassName('active');
+    });
+
+    $('nav_' + id).addClassName('active');
+
+    if (id == 'url') {
+        $('file_placeholder').hide();
+        $('url_placeholder').show();
+    }
+	else {
+        $('url_placeholder').hide();
+        $('file_placeholder').show();
+		$('spot_thing_attributes_photo_url').value = "";
+    }
+}
+
+</script>

@@ -1,0 +1,7 @@
+<h1>Your Facebook Friends</h1>
+
+<%= render :partial => 'friends/search_box' %>
+
+<%= render 'users/friends_list', :friends => @friend_users %>
+
+<%= will_paginate @friend_users %>

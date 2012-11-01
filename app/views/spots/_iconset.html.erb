@@ -1,0 +1,9 @@
+<div id="iconset<%= spot_index %>" class="ts_iconset"<% unless always_show %> style="display:none;"<% end %>><% if spot %>
+<%= 
+(link_to_remote '', { :url => toggle_share_spot_path(spot), :method => :put }, { :class => (spot.thing.is_shared?(current_user) ? 'ts_icon ts_share_is' : 'ts_icon ts_share'), :id => 'share' + spot.id.to_s, :title => (spot.thing.is_shared?(current_user) ? 'Remove thing from your Feed' : 'Add thing to your Feed') })  %><%= 
+ link_to_remote '', { :url => toggle_want_spot_path(spot), :method => :put }, { :class => (spot.thing.is_wanted?(current_user) ? 'ts_icon ts_want_is' : 'ts_icon ts_want'), :id => 'want' + spot.id.to_s, :title => (spot.thing.is_wanted?(current_user) ? 'Remove thing from your wishlist' : 'Add thing to your wishlist') } %><%= 
+ link_to_remote '', { :url => toggle_own_spot_path(spot), :method => :put }, { :class => (spot.thing.is_owned?(current_user) ? 'ts_icon ts_own_is' : 'ts_icon ts_own'), :id => 'own' + spot.id.to_s, :title => (spot.thing.is_owned?(current_user) ? 'Unmark this thing as owned' : 'Mark this thing as owned by you') } %><%= 
+ link_to '', new_recommendation_path(:thing => spot.thing), :class => 'ts_icon ts_recommend', :title => 'Recommend this thing to someone' %>
+<% unless always_show %><div class="ts_iconset_background" onclick="window.location.href='<%= thing_path(spot.thing) %>';"></div>
+<div class="byline"><%= spot.action_verb %> <%= relative_date spot.created_at %> by <%= user_or_you spot.user %></div><% end %>
+<% end %></div>

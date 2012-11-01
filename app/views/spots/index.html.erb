@@ -1,0 +1,11 @@
+<div id="sub_menu">
+<%= link_to('My Things', current_user, :class => 'menu_item' + (@view == 'mythings' ? ' active' : '')) if current_user %>
+<%= link_to 'Friends', root_path, :class => 'menu_item' + (@view == 'friends_recent' ? ' active' : '') %>
+<%#= link_to 'Popular', root_path(:view => 'popular'), :class => 'menu_item' + (@view == 'friends_popular' ? ' active' : '') %>
+<%= link_to 'Recent', highscore_things_path(:view => 'recent'), :class => 'menu_item' + (@view == 'all_recent' ? ' active' : '') %>
+<%= link_to 'Popular', highscore_things_path, :class => 'menu_item' + (@view == 'all_popular' ? ' active' : '') %>
+<%= link_to 'Editor\'s picks', highscore_things_path(:view => 'featured'), :class => 'menu_item' + (@view == 'all_featured' ? ' active' : '') %>
+<br/><%= link_to 'Add Thing', new_spot_path, :class => 'menu' %>
+</div>
+
+<%= render 'spots/list_with_navigation', :spots => @spots %>

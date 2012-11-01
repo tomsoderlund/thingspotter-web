@@ -1,0 +1,1 @@
+page['invitation' + flash[:invitation_id].to_s].visual_effect :fade

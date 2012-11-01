@@ -1,0 +1,11 @@
+<% 
+
+spot_index = -1
+spot_index = (@page.to_i * 16) if @page
+
+# TODO: fix this ugly (spots || @spots)
+(@spots || spots).each do |spot| 
+	spot_index = spot_index + 1
+%>
+<% if response.layout == 'mobile' %><%= render :partial => 'spots/thing_box', :locals => { :spot => spot, :photo_style => 'thumbnail', :i => spot_index, :x => cycle(11, 114, 217), :y => (11 + Integer(spot_index/3) * 122) } %>
+<% else %><%= render :partial => 'spots/thing_box', :locals => { :spot => spot, :photo_style => 'web_thumb', :spot_index => spot_index, :col => cycle(1, 2, 3, 4), :row => ((@page && @page.to_i > 1) ? 666 : cycle(1,1,1,1, 2,2,2,2, 3,3,3,3, 4,4,4,4, 5,5,5,5, :name => "row")) } %><% end %><% end %>

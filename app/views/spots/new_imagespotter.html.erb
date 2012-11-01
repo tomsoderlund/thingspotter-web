@@ -1,0 +1,22 @@
+<div><%= image_tag('thingspotter_logo_small.png') %></div>
+
+<h3 class="imagespotter_header"><%= @mode.capitalize %> New Thing</h3>
+
+<%= javascript_include_tag 'imagespotter' %>
+
+<% form_for(@spot, :html => { :multipart => true }, :onsubmit => "$('new_spot').disable();") do |f| %>
+  <%= f.error_messages %>
+<%= hidden_field_tag 'imagespotter', 'true' %>
+
+<% f.fields_for :thing do |f_thing| %>
+<%= render 'things/form_photo', { :f => f_thing, :thing => @spot.thing, :photo_style => 'web_thumb', :photo_size => 'web_imagespotter' } %>
+
+<%= render :partial => 'form_fields', :locals => { :f => f, :f_thing => f_thing } %>
+<% end %>
+
+<div class="menu">
+<%= f.submit 'Save' %>
+<%= link_to_function 'Cancel', 'closeImageSpotterFrame();', :class => 'menu cancel' %>
+</div>
+
+<% end %>

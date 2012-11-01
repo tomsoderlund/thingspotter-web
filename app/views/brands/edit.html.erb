@@ -1,0 +1,11 @@
+<% form_for(@brand) do |f| %>
+  <%= f.error_messages %>
+<table>
+	<tr><td><%= f.label :name %></td><td><%= f.text_field :name %></td></tr>
+	<tr><td><%= f.label :website %></td><td><%= f.text_field :website %></td></tr>
+	<tr><td><%= f.label :search_url %></td><td><%= f.text_field :search_url %></td></tr>
+</table>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+<div id="main_menu">
+<a class="menu_item<%= @page_reference == 'thingspotter' ? ' active' : '' %>" id="feed" href="<%= root_path %>"><span>Things</span></a>
+<a class="menu_item<%= @page_reference == 'collections' ? ' active' : '' %>" id="collections" href="<%= collections_path %>"><span>Collections</span></a>
+<% if current_user %>
+<a class="menu_item<%= @page_reference == 'followings' ? ' active' : '' %>" id="friends" href="<%= followings_path %>"><span>People</span></a>
+<a class="menu_item<%= @page_reference == 'mythings' ? ' active' : '' %>" id="mythings" href="<%= user_path(current_user) if current_user %>"><span>Me</span></a>
+<% end %>
+</div>

@@ -1,0 +1,2 @@
+<% collection_things.each do |collection_thing| %>
+<%= render :partial => 'collection_things/collection_thing', :locals => { :collection_thing => collection_thing, :photo_style => 'web_thumb', :col => cycle(1, 2, 3, 4), :row => cycle(1,1,1,1, 2,2,2,2, 3,3,3,3, 4,4,4,4, 5,5,5,5, :name => "row") } %><% end %>

@@ -1,0 +1,5 @@
+<% if !list_item.spot %><li id="comment<%= list_item.id %>"><span id="user_photo_small"><fb:profile-pic uid="<%= list_item.user.fb_user_id %>" size="square" width="20" height="20" facebook-logo="false" linked="false"></fb:profile-pic></span>
+<span class="quote"><%= list_item.comment %></span>
+- <%= relative_date(list_item.created_at) %>
+by <%= user_or_you list_item.user %>
+<%= link_to_remote(image_tag('icon_delete_off.png'), { :url => comment_path(list_item), :method => :delete, :confirm => 'This will delete the comment. Continue?' }) if (list_item.user == current_user) %></li><% end %>

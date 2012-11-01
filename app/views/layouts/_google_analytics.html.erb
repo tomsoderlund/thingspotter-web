@@ -1,0 +1,24 @@
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3009258-8']);
+  _gaq.push(['_setDomainName', 'thingspotter.com']);
+  <% if is_admin? %>_gaq.push(['_setCustomVar', 1, 'User Type', 'Administrator', 2]);<% 
+elsif current_user %>_gaq.push(['_setCustomVar', 1, 'User Type', 'Member', 2]);<% 
+else %>_gaq.push(['_setCustomVar', 1, 'User Type', 'Visitor', 2]);<% 
+end %>
+  _gaq.push(['_trackPageview'<%= (", '" + @page_tracking_path + "'") if @page_tracking_path %>]);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+	// Based on http://www.google.com/support/analytics/bin/answer.py?answer=55527
+	function recordOutboundLink(url, category, action, opt_label, opt_value) {
+		_gat._getTrackerByName()._trackEvent(category, action, opt_label, opt_value);
+		//setTimeout('document.location = "' + url + '"', 100);
+		//setTimeout('window.open("' + url + '", "thingspotter_external")', 100);
+		window.open(url, "thingspotter_external");
+	}
+
+</script>

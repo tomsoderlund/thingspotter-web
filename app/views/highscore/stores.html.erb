@@ -1,0 +1,14 @@
+<h1>Most Popular Stores</h1>
+
+<table>
+<% @stores.each do |store| %>
+  <tr>
+  <td><%= h(store.name) %></td>
+  <td>(<%= link_to('Edit', edit_store_path(store)) %> | <%= link_to 'Delete', store, :confirm => 'Delete this store?', :method => :delete %>)</td>
+  <td><%= link_to(store.url_key, "http://#{store.url_key}") if store.url_key %></td>
+  <td><%= link_to pluralize(store.spots.count, 'spots'), search_path(:search => CGI::escapeHTML(store.name)) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @stores %>

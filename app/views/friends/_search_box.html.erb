@@ -1,0 +1,9 @@
+<div id="search_box_users">
+<% form_tag('/friends', :method => :get, :id => 'search_form') do -%>
+<%= text_field_tag 'name', params[:name], :id => 'search_friend_field', :size => 25, :onkeyup => 'if (this.value != "") $("search_button").addClassName("active"); else $("search_button").removeClassName("active");' %>
+<%= link_to_function '', '$("search_form").submit();', :id => 'search_button' %>
+<% end -%>
+
+<%= javascript_include_tag 'hintvalue' %>
+<%= javascript_tag "new HintValue('search_friend_field', {value: 'Search for friend'});" %>
+</div>

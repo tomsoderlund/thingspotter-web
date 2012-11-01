@@ -1,0 +1,23 @@
+en:
+  name: English
+  language_code: en
+
+fr:
+  name: French
+  language_code: fr
+
+de:
+  name: German
+  language_code: de
+
+it:
+  name: Italian
+  language_code: it
+
+es:
+  name: Spanish
+  language_code: es
+
+sv:
+  name: Swedish
+  language_code: sv

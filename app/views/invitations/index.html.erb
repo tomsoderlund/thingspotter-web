@@ -1,0 +1,30 @@
+<h1>Invitations not yet used</h1>
+
+<%= link_to 'New Invitation', new_invitation_path, :class => 'menu' %>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Email</th>
+<th>Date</th>
+<th>Invited By</th>
+<th>Link</th>
+<th>Actions</th>
+</tr>
+<% @invitations.each do |invitation| %>
+<tr id="<%= "invitation#{invitation.id}" %>" class="<%= cycle('odd', 'even') %>">
+<td><%= invitation.id %>.</td>
+<td><%= invitation.recipient_email %></td>
+<td><%= relative_date(invitation.created_at) %></td>
+<td><%= (invitation.sender.nil? ? "(self sign-up)" : "#{invitation.sender.name}") %></td>
+<td><%= link_to 'Link', "#{$SERVER_URL}/intro/#{invitation.token}" %></td>
+<td><% form_for(invitation, :remote => true) do |f| %>
+  <%= f.hidden_field :recipient_email %>
+  <%= hidden_field_tag "invitation_type", 0 %>
+  <%= link_to_function("English invite", "$('edit_invitation_#{invitation.id}').invitation_type.value = 1; $('edit_invitation_#{invitation.id}').request();", :class => 'menu') %>
+  <%= link_to_function("Swedish invite", "$('edit_invitation_#{invitation.id}').invitation_type.value = 2; $('edit_invitation_#{invitation.id}').request();", :class => 'menu') %>
+  <%= link_to_remote(image_tag('icon_delete_off.png'), { :url => invitation_path(invitation), :method => :delete, :confirm => 'This will delete the invitation. Continue?' }) %>
+<% end %></td>
+</tr>
+<% end %>
+</table>

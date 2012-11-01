@@ -1,0 +1,9 @@
+<div class="collection_box col<%= col %> row<%= row %>" onmouseover="hideAllIconSets();$('iconset<%= collection.id.to_s %>').show();"> 
+<div class="title"><%= link_to h("#{collection.name} by #{collection.user.name}"), collection %></div>
+<% if (can_edit_thing?(collection)) %><div class="delete_button"><%= link_to image_tag('icon_delete_off.png'), collection, :confirm => 'Delete this collection?', :method => :delete %></div><% end %>
+<% collection.things[0..3].each do |thing| %><%= link_to image_tag(thing.photo_path('web_collection_thumb'), :alt => thing.name_with_brand, :class => 'thing_thumbnail'), collection %><% end %>
+<div id="iconset<%= collection.id %>" class="ts_iconset" style="display:none;"><% if collection %>
+<div class="ts_iconset_background" onclick="window.location.href='<%= collection_path(collection) %>';"></div>
+<div class="byline">Created <%= relative_date collection.created_at %> by <%= user_or_you collection.user %></div>
+<% end %></div>
+</div>

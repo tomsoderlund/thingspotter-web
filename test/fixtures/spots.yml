@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  thing_id: 1
+  vendor_id: 1
+  is_wanted: false
+  is_owned: false
+
+two:
+  user_id: 1
+  thing_id: 1
+  vendor_id: 1
+  is_wanted: false
+  is_owned: false

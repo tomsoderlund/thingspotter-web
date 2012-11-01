@@ -1,0 +1,1 @@
+page['comment' + flash[:comment_id].to_s].visual_effect :fade

@@ -1,0 +1,23 @@
+<% form_for(@page) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :permalink %><br/>
+    /<%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label :body %><br/>
+    <%= f.text_area :body, :rows => 18, :cols => 80 %><br/>
+	Note: basic formatting, e.g. line break becomes &lt;br/&gt;, two line breaks becomes &lt;p&gt; etc
+  </p>
+  <p>
+    <%#= f.label :user_id %><br/>
+    <%#= f.select :user_id, User::short_list %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>

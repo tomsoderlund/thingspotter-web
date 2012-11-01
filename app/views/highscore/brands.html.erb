@@ -1,0 +1,14 @@
+<h1>Most Popular Brands</h1>
+
+<table>
+<% @brands.each do |brand| %>
+  <tr>
+  <td><%= h(brand.name) %></td>
+  <td>(<%= link_to('Edit', edit_brand_path(brand)) %> | <%= link_to 'Delete', brand, :confirm => 'Delete this brand?', :method => :delete %>)</td>
+  <td><%= link_to(brand.website, "http://#{brand.website}") if brand.website %></td>
+  <td><%= link_to pluralize(brand.things.count, 'thing'), search_path(:search => CGI::escapeHTML(brand.name)) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @brands %>

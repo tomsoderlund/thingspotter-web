@@ -1,0 +1,29 @@
+<h1>Current Highscore for <%= @current_month %></h1>
+
+<h2>Points Explanation</h2>
+
+<p>
+New spots = 1p.
+Re-spots = 5p to the original spotter.
+Recommendations = 5p to the one doing the recommendation.
+Comments = 5p to the commenter (excluding comments on your own spots).
+</p>
+
+<h2>Current Highscore</h2>
+
+<table>
+<tr><th>#</th><th></th><th>Name</th><th></th><th>Points</th></tr>
+<% 
+
+position = 0
+
+@users.each do |user| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+  <td><%= position = position + 1 %></td>
+  <td><fb:profile-pic uid="<%= user.fb_user_id %>" size="square" facebook-logo="false" linked="false" class="user_photo"></fb:profile-pic></td>
+  <td><%= link_to h(user.name), user %></td>
+  <td><%= render 'followers/follow_button', :user => user %></td>
+  <td><%= user.points %></td>
+  </tr>
+<% end %>
+</table>

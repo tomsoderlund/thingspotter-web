@@ -1,0 +1,9 @@
+<tr>
+<td><a href="<%= user_path(user) %>"><fb:profile-pic uid="<%= user.fb_user_id %>" size="square" facebook-logo="false" linked="false" class="user_photo"></fb:profile-pic></a></td>
+<td><%= link_to h(user.name), user %><br/>
+	<% if user.is_registered? %>
+	<%= user.spots.count %> spots
+	<% else %>(not yet registered)<% end %>
+</td>
+<td><%= render 'followers/follow_button', :user => user %></td>
+</tr>

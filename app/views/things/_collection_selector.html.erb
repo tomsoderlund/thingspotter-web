@@ -1,0 +1,4 @@
+<% form_tag('/collection_things', :method => :post, :id => 'add_collection_thing_form') do -%>
+<%= hidden_field_tag('collection_thing[thing_id]', @thing.id) %>
+<%= select('collection_thing', 'collection_id', Collection.short_list(current_user), {:prompt => '(Select a collection)'}, :onchange => "$('add_collection_thing_form').request();") %>
+<% end -%>

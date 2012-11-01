@@ -1,0 +1,1 @@
+<%= link_to_remote("More Things", :url =>{:controller => :spots, :action => 'index', :page => (@page.to_i + 1)}, :method => :get, :html =>{:id => 'loadmore', :class => 'loadmore'}, :loading => "$('loadmore').innerHTML = 'Loading...';", :loaded => "$('loadmore').innerHTML = 'More Things';") %>
