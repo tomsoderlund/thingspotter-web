@@ -167,8 +167,16 @@ class Spot < ActiveRecord::Base
     end
     
     # TODO: Replace with custom SQL/find_by_sql
+    # Original:
     #spots = Spot.paginate(:all, :include => [:thing, :user, :store, {:thing => :tags}, {:thing => :brand}], :group => :thing_id, :order => order, :conditions => conditions, :page => page, :per_page => per_page)
-    spots = Spot.find(:all, :include => [:thing, :user, :store, {:thing => :tags}, {:thing => :brand}], :group => :thing_id, :order => order, :conditions => conditions, :limit => 20)
+    
+    # Fixed for Postgres:
+    spots = Spot.paginate(:all, :include => [:thing, {:thing => :tags}, {:thing => :brand}], :joins => [:user, :store, :thing], :group => 'thing_id,things.id,users.id,spots.id', :order => order, :conditions => conditions, :page => page, :per_page => per_page)
+    
+    # New from Stack Overflow:
+    #spots = Spot.find_by_sql("SELECT * FROM (SELECT DISTINCT ON (spots.id) spots.id, spots.created_at AS spots_created_at FROM spots LEFT JOIN things ON things.id = spots.thing_id WHERE (spots.recommended_to_user_id = 1 OR spots.user_id IN (1) OR things.is_featured = 't') GROUP BY thing_id, things.id, spots.id) id_list ORDER BY id_list.spots_created_at DESC LIMIT 16 OFFSET 0;")
+    
+    #spots = Spot.find(:all, :include => [:thing, :user, :store, {:thing => :tags}, {:thing => :brand}], :group => :thing_id, :order => order, :conditions => conditions, :limit => 20)
     
     return spots
   end

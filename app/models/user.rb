@@ -93,23 +93,23 @@ class User < ActiveRecord::Base
   end
   
   def all_spots(page = 1)
-    return Spot.search(nil, ["user_id = ?", self.id], nil, page)
+    return Spot.search(nil, ["spots.user_id = ?", self.id], nil, page)
   end
   
   def wanted_spots(page = 1)
-    return Spot.search(nil, ["user_id = ? AND is_wanted = ?", self.id, true], nil, page)
+    return Spot.search(nil, ["spots.user_id = ? AND is_wanted = ?", self.id, true], nil, page)
   end
   
   def owned_spots(page = 1)
-    return Spot.search(nil, ["user_id = ? AND is_owned = ?", self.id, true], nil, page)
+    return Spot.search(nil, ["spots.user_id = ? AND is_owned = ?", self.id, true], nil, page)
   end
   
   def wishlist_spots(page = 1)
-    return Spot.search(nil, ["user_id = ? AND is_wanted = ? AND is_owned = ?", self.id, true, false], nil, page)
+    return Spot.search(nil, ["spots.user_id = ? AND is_wanted = ? AND is_owned = ?", self.id, true, false], nil, page)
   end
   
   def recommended_spots(page = 1)
-    return Spot.search(nil, ["user_id = ? AND recommended_to_user_id IS NOT NULL", self.id], nil, page)
+    return Spot.search(nil, ["spots.user_id = ? AND recommended_to_user_id IS NOT NULL", self.id], nil, page)
   end
 
   def related_users

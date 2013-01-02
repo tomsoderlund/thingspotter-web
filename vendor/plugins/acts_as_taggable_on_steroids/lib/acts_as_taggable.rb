@@ -33,7 +33,7 @@ module ActiveRecord #:nodoc:
       module SingletonMethods
         
         def get_default_tags
-          Tag.find(:all, :conditions => "show_by_default = 1 OR show_by_default = 't'", :order => "#{Tag.table_name}.name")
+          Tag.find(:all, :conditions => ["show_by_default = ?", true], :order => "#{Tag.table_name}.name")
         end
         
         # Returns an array of related tags.

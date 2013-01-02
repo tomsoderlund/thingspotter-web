@@ -11,6 +11,7 @@ class CreatePages < ActiveRecord::Migration
     
     Page.create(:title => 'About', :permalink => 'about', :body => '...')
     Page.create(:title => 'Thingspotter Beta', :permalink => 'beta', :body => '...')
+    Page.create(:title => 'Welcome!', :permalink => 'welcome_new_user', :body => '...')
   end
 
   def self.down

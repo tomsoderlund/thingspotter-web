@@ -4,7 +4,7 @@ ruby "1.8.7"
 gem "rails", "~> 2.3.12"
 gem "pg"
 #gem "sqlite3-ruby"
-#gem 'will_paginate', '~> 2.3.16'
+gem 'will_paginate'#, '~> 2.3.16'
 gem 'paperclip'
 #gem 'auto_complete'
 gem 'acts_as_taggable_on_steroids'
