@@ -29,8 +29,13 @@ staging:
   namespace: thingspotter_staging
 
 production:
-  app_id: 195135130526694
-  api_key: 28aac256bbbe09dcae1eb7086ae1c326
-  secret_key: c120c6d80ba02a0b93c8adc4aa578136
-  callback_url: http://www.thingspotter.com/
+  # app_id: 195135130526694
+  # api_key: 28aac256bbbe09dcae1eb7086ae1c326
+  # secret_key: c120c6d80ba02a0b93c8adc4aa578136
+  # callback_url: http://www.thingspotter.com/
+  # namespace: thingspotter
+  app_id: 265881436784759
+  api_key: 
+  secret_key: b824f99f231a3a38f054415038ef2f8e
+  callback_url: http://thingspotter.herokuapp.com/
   namespace: thingspotter
